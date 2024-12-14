@@ -2,9 +2,6 @@ if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
 
-// console.log(process.env.SECRET);
-// console.log(process.env.API_KEY);
-
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -21,7 +18,8 @@ const campgroundRoutes = require('./routes/campground');
 const reviewRoutes = require('./routes/reviews');
 const MongoStore = require('connect-mongo');
 
-const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp';
+// const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp';
+const dbUrl = process.env.DB_URL;
 
 mongoose.set("strictQuery", true);
 mongoose.connect(dbUrl);
